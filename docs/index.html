@@ -16,7 +16,7 @@
     <div class="nav-container">
       <!-- Cambia el texto Voltix por la imagen VOLTIX.png -->
       <img src="imagen/VOLTIX.png" alt="Voltix" class="nav-logo" />
-      <ul class="nav-links">
+      <ul class="nav-links" id="navLinks">
         <li><a href="#inicio">Inicio</a></li>
         <li><a href="#sobre-nosotros">Sobre Nosotros</a></li>
         <li class="submenu-parent">
@@ -30,6 +30,11 @@
         <li><a href="#nuestros-valores">Nuestros Valores</a></li>
         <li><a href="#se-parte">Sé parte</a></li>
       </ul>
+      <div class="hamburger" id="hamburger" aria-label="Abrir menú" tabindex="0">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
     </div>
   </nav>
 
@@ -53,30 +58,30 @@
           <h3>Testimonios</h3>
           <div class="testimonial-slider">
             <div class="testimonial active">
-              <strong>Vicente Rapetti:</strong> “Creemos que la tecnología puede cambiar el mundo sin dañarlo.”
+              <strong>Vicente Rapetti:</strong> "Creemos que la tecnología puede cambiar el mundo sin dañarlo."
             </div>
             <div class="testimonial">
-              <strong>Martina Machado:</strong> “Voltix me inspiró a pensar en soluciones ecológicas todos los días.”
+              <strong>Martina Machado:</strong> "Voltix me inspiró a pensar en soluciones ecológicas todos los días."
             </div>
             <div class="testimonial">
-              <strong>Tiziano Accastelli:</strong> “Un proyecto que demuestra que la innovación y el cuidado ambiental pueden ir de la mano.”
+              <strong>Tiziano Accastelli:</strong> "Un proyecto que demuestra que la innovación y el cuidado ambiental pueden ir de la mano."
             </div>
             <div class="testimonial">
-              <strong>Ignacio Martinez:</strong> “Aparte de ser un proyecto innovador los chicos aplican sus conocimientos técnicos.”
+              <strong>Ignacio Martinez:</strong> "Aparte de ser un proyecto innovador los chicos aplican sus conocimientos técnicos."
             </div>
           </div>
         </div>
         <div class="social-links">
-          <a href="https://instagram.com/voltix.etrr" target="_blank" aria-label="Instagram">
+          <a href="https://instagram.com/voltix.etrr" target="_blank" aria-label="Instagram" rel="noopener noreferrer">
             <img src="https://cdn.jsdelivr.net/npm/simple-icons@v11/icons/instagram.svg" alt="Instagram" />
           </a>
-          <a href="https://www.youtube.com/channel/UCbK2aS_GOu-gIjb2AQR7m9Q" target="_blank" aria-label="YouTube">
+          <a href="https://www.youtube.com/channel/UCbK2aS_GOu-gIjb2AQR7m9Q" target="_blank" aria-label="YouTube" rel="noopener noreferrer">
             <img src="https://cdn.jsdelivr.net/npm/simple-icons@v11/icons/youtube.svg" alt="YouTube" />
           </a>
-          <a href="mailto:voltix@etrr.edu.ar" target="_blank" aria-label="Mail">
+          <a href="mailto:voltix@etrr.edu.ar" target="_blank" aria-label="Mail" rel="noopener noreferrer">
             <img src="https://cdn.jsdelivr.net/npm/simple-icons@v11/icons/maildotru.svg" alt="Mail" />
           </a>
-          <a href="https://wa.me/549113489552964" target="_blank" aria-label="WhatsApp">
+          <a href="https://wa.me/549113489552964" target="_blank" aria-label="WhatsApp" rel="noopener noreferrer">
             <img src="https://cdn.jsdelivr.net/npm/simple-icons@v11/icons/whatsapp.svg" alt="WhatsApp" />
           </a>
         </div>
@@ -136,8 +141,8 @@
         </div>
       </div>
       <div class="modelado3d-subsection" style="flex:1; min-width:300px; background:#181F2A; text-align:center; display:flex; flex-direction:column; justify-content:center;">
-        <model-viewer src="/modelos/Modelado.gltf" alt="Cargador Voltix 3D"
-          auto-rotate camera-controls ar
+        <model-viewer src="modelos/Modelado.gltf" alt="Cargador Voltix 3D"
+          auto-rotate camera-controls ar touch-action="pan-y"
           style="width: 100%; max-width: 520px; height: 420px; background: #232B3A; border-radius: 18px; margin: 0 auto; box-shadow: 0 4px 24px #0002;">
         </model-viewer>
       </div>
@@ -188,6 +193,17 @@
   </footer>
 
   <script>
+    // Menú hamburguesa para responsive
+    const hamburger = document.getElementById('hamburger');
+    const navLinks = document.getElementById('navLinks');
+    hamburger.addEventListener('click', () => {
+      navLinks.classList.toggle('open');
+    });
+    hamburger.addEventListener('keypress', (e) => {
+      if (e.key === 'Enter' || e.key === ' ') {
+        navLinks.classList.toggle('open');
+      }
+    });
     // Animación de desplazamiento vertical para testimonios
     const testimonials = document.querySelectorAll('.testimonial-slider .testimonial');
     let current = 0;
