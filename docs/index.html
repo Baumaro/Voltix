@@ -16,7 +16,13 @@
     <div class="nav-container">
       <!-- Cambia el texto Voltix por la imagen VOLTIX.png -->
       <img src="imagen/VOLTIX.png" alt="Voltix" class="nav-logo" />
-      <ul class="nav-links">
+      <!-- Botón hamburguesa -->
+      <div class="hamburger" id="hamburger-menu" aria-label="Abrir menú" tabindex="0">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+      <ul class="nav-links" id="nav-links">
         <li><a href="#inicio">Inicio</a></li>
         <li><a href="#sobre-nosotros">Sobre Nosotros</a></li>
         <li class="submenu-parent">
@@ -196,6 +202,22 @@
       current = (current + 1) % testimonials.length;
       testimonials[current].classList.add('active');
     }, 3500);
+
+    // Menú hamburguesa responsive
+    const hamburger = document.getElementById('hamburger-menu');
+    const navLinks = document.getElementById('nav-links');
+    hamburger.addEventListener('click', () => {
+      navLinks.classList.toggle('open');
+    });
+    hamburger.addEventListener('keypress', (e) => {
+      if (e.key === 'Enter' || e.key === ' ') navLinks.classList.toggle('open');
+    });
+    // Cierra menú al hacer click en un enlace (en móvil)
+    document.querySelectorAll('.nav-links a').forEach(link => {
+      link.addEventListener('click', () => {
+        if (window.innerWidth < 900) navLinks.classList.remove('open');
+      });
+    });
   </script>
 </body>
 </html>

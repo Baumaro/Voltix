@@ -506,3 +506,69 @@ textarea {
 #nuestros-valores h2 {
   margin-top: 2.5rem;
 }
+
+/* Menú hamburguesa para móvil */
+.hamburger {
+  display: none;
+  flex-direction: column;
+  cursor: pointer;
+  width: 32px;
+  height: 32px;
+  justify-content: center;
+  align-items: center;
+  z-index: 1100;
+}
+.hamburger span {
+  height: 4px;
+  width: 26px;
+  background: #4CA3FF;
+  margin: 3px 0;
+  border-radius: 2px;
+  transition: 0.3s;
+  display: block;
+}
+@media (max-width: 900px) {
+  .nav-links {
+    position: fixed;
+    top: 70px;
+    right: 0;
+    background: #232B3A;
+    flex-direction: column;
+    gap: 0;
+    width: 220px;
+    height: 100vh;
+    align-items: flex-start;
+    padding: 2rem 1.5rem;
+    transform: translateX(100%);
+    transition: transform 0.3s;
+    box-shadow: -2px 0 18px #0004;
+    z-index: 1001;
+  }
+  .nav-links.open {
+    transform: translateX(0);
+  }
+  .nav-links li {
+    width: 100%;
+    margin-bottom: 1.2rem;
+  }
+  .nav-links li:last-child {
+    margin-bottom: 0;
+  }
+  .submenu {
+    position: static;
+    box-shadow: none;
+    border-radius: 0 0 10px 10px;
+    background: #232B3A;
+    padding-left: 1rem;
+  }
+  .submenu-parent:hover .submenu,
+  .submenu-parent:focus-within .submenu {
+    display: block;
+  }
+  .hamburger {
+    display: flex;
+  }
+  .nav-logo {
+    height: 38px;
+  }
+}
